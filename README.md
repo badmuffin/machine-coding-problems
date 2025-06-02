@@ -4,6 +4,6 @@ This repository contains solutions to common **machine coding** problems, built 
 
 ## 📂 Project Structure
 
-/Machine-Coding-Problems
-├── autocomplete-search/ → A simple search bar
+/Machine-Coding-Problems  
+├── autocomplete-search/ → A simple search bar  
 ├── 
