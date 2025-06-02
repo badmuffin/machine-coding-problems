@@ -7,15 +7,21 @@ const App = () => {
   const [cache, setCache] = useState({});
 
   const fetchData = async () => {
+    const key = input.trim().toLowerCase();
+
+    if (cache[key]) {
+      setResult(cache[key]);
+      console.log("CACHE -> ", key);
+      return;
+    }
 
     console.log("API TEST -> ", input);
-
-    const data = await fetch(
-      `https://dummyjson.com/recipes/search?q=${input}`
-    );
-
+    const data = await fetch(`https://dummyjson.com/recipes/search?q=${input}`);
     const json = await data.json();
+
     setResult(json?.recipes);
+    // putting key in square bracket because key is dynamic, otherwise it will simply take key as string literal.
+    setCache((prev) => ({ ...prev, [key]: json?.recipes }));
   };
 
   // debouncing
@@ -41,13 +47,13 @@ const App = () => {
           onBlur={() => setIsResultVisible(false)}
         />
         {isResultVisible && (
-          <div className="result-container">
+          <ul className="result-container">
             {result.map((data) => (
-              <span className="result" key={data.id}>
+              <li className="result" key={data.id}>
                 {data.name}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </div>
