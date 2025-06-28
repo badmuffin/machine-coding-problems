@@ -6,4 +6,5 @@ This repository contains solutions to common **machine coding** problems, built 
 
 /Machine-Coding-Problems  
 ├── autocomplete-search/ → A simple search bar  
-├── 
+├── chipsInput/ → Generate Chip based on user input
+├──
